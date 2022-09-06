@@ -1,6 +1,10 @@
 # Clock Widget
 A digital clock to be placed on the Windows desktop using Python's Tkinter module.
 
+<p align="center">
+  <img src="images/initialExample.JPG" alt="Example of Clock Widget in action">
+</p>
+
 ## Project Origin
 For a course's final project, the task description read: "All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. **Strive to create something that outlives this course.**" From there, I wrote the initial version to [StickyNoteWidget](https://github.com/danbsolo/StickyNoteWidget). Feeling inspired, I then quickly wrote this application soon after.
 
