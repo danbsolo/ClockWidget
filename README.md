@@ -9,7 +9,7 @@ A digital clock to be placed on the Windows desktop using Python's Tkinter modul
 If you're reading this, then you're probably my facilitator. Hello! This is a prototype I developed long ago, but dropped in favor of other projects. I'm using this class as an opportunity to visit it once again.
 
 ## Project Origin
-For a course's final project, the task description read: "All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. **Strive to create something that outlives this course.**" From there, I wrote the initial version to [StickyNoteWidget](https://github.com/danbsolo/StickyNoteWidget). Feeling inspired, I then quickly wrote this application soon after.
+For a course's final project, the task description read: "All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. **Strive to create something that outlives this course.**" From there, I wrote the initial version to [StickyNoteWidget](https://github.com/danbsolo/StickyNoteWidget). Feeling inspired, I then quickly wrote this application soon after for fun.
 
 ## Preface
 This project is still very much in beta, much of the code hanging by a thread along with inadequate style. I aim to fix its shortcomings in the near future, but for now, the requirements are a little obtuse.
