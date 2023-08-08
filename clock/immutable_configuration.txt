@@ -1,9 +1,0 @@
-# Setting: Specification
-
-ORR: false
-
-# set these to 0 if adjusting isn't necessary
-rootx_adjust: -8
-rooty_adjust: -31
-
-# previous coords: 1090+445

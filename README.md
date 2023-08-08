@@ -5,6 +5,8 @@ A digital clock to be placed on the Windows desktop using Python's Tkinter modul
   <img src="images/initialExample.JPG" alt="Example of Clock Widget in action">
 </p>
 
+
+# Artifacts~
 ## Important
 If you're reading this, then you're probably my facilitator. Hello! This is a prototype I developed long ago, but dropped in favor of other projects. I'm using this class as an opportunity to visit it once again.
 
