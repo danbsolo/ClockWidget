@@ -1,4 +1,4 @@
-# Clock Widget
+# ClockWidget
 A digital clock to be placed on the Windows desktop using Python. Uses Tkinter and SQLite.
 
 <p align="center">
