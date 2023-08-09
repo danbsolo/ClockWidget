@@ -16,7 +16,7 @@ A digital clock to be placed on the Windows desktop using Python. Uses Tkinter a
 Note: Consider using Window's Task Scheduler (or your OS's equivalent) in order to open this application automatically upon device startup.
 
 <p align="center">
-  <img src="images/rightClickMenuExample.JPG" alt="Example of rightClick menu">
+  <img src="images/rightClickMenu.JPG" alt="Example of rightClick menu">
 </p>
 
 
