@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import font
+from tkinter import messagebox
 import webbrowser
 import sqlite3 as sqlite
 from datetime import datetime as date
@@ -97,6 +98,18 @@ class ClockWidget:
         self.rightClickMenu.add_separator()
 
         self.rightClickMenu.add_command(
+            label="Create Widget",
+            command=lambda: self.hub.rootWindow.deiconify()
+        )
+
+        self.rightClickMenu.add_command(
+            label="Delete Widget",
+            command=lambda: self.deleteWidget()
+        )
+
+        self.rightClickMenu.add_separator()
+
+        self.rightClickMenu.add_command(
             label="Close Window",
             command=lambda: self.closeWindow()
         )
@@ -137,6 +150,28 @@ class ClockWidget:
     # Decides where to open the menu options. In this case, next to the mouse.
     def rightClickPopup(self, event):
         self.rightClickMenu.tk_popup(event.x_root, event.y_root)
+
+    
+    def deleteWidget(self):
+        confirmation = messagebox.askyesnocancel(
+            "Are you sure?", "Clock {} is to be deleted. This is an irreversible action.".format(
+                self.ID
+            )
+        )
+
+        if not confirmation:
+            return
+
+        self.hub.db.execute("\
+            DELETE FROM CLOCKSETTINGS\
+            WHERE ID == {}".format(
+                self.ID)
+            )
+        
+        self.hub.connector.commit()
+        self.closeWindow(0)
+
+
 
     # SQLite doesn't take Boolean values, so working around that requires utilizing 1 and 0.
     def toggleORR(self):
@@ -192,9 +227,14 @@ class ClockWidget:
         self.hub.connector.commit()
         
 
-    def closeWindow(self):
-        self.saveData()
-        self.hub.closeApplication()
+    def closeWindow(self, save=1):
+        if save:
+            self.saveData()
+            self.hub.closeApplication()
+        else:
+            self.parentWindow.withdraw()
+
+        
 
 
     def updateCurrentTime(self):
@@ -257,6 +297,7 @@ class ClockWidgetHub:
         self.rootWindow = rootWindow
         self.rootWindow.title("ClockWidgetHub")
         self.rootWindow.iconify()
+        self.rootWindow.resizable(0, 0)
 
         # absolute path of current folder
         self.parentDir = path.dirname(path.abspath(__file__))
@@ -275,10 +316,20 @@ class ClockWidgetHub:
             SELECT * FROM sqlite_master\
             WHERE tbl_name == 'CLOCKSETTINGS'")
         
+
+
         if not self.db.fetchone():
             self.createSQLiteTable()
             self.insertDefaultClockWidget('Clock')
             self.connector.commit()
+        else:
+            self.db.execute("\
+                SELECT * FROM CLOCKSETTINGS\
+                LIMIT 1")
+            
+            if not self.db.fetchone():
+                self.insertDefaultClockWidget('Clock')
+
         
         # now that CLOCKSETTINGS is guaranteed to have at least one entry, open it
         self.db.execute("\
@@ -294,6 +345,28 @@ class ClockWidgetHub:
         
         # any clockWidget will do
         self.adjustPositionXYvalues(clockWidget)
+
+        
+        newClockWidgetButton = tk.Button(
+            self.rootWindow,
+            command=lambda: self.createNewWidget(),
+            text=" + ",
+            font=('Consolas', 50),
+            bg="light green",
+            activebackground="green"
+        )
+        newClockWidgetButton.pack(expand=tk.TRUE, fill=tk.BOTH)
+
+    def createNewWidget(self):
+        self.insertDefaultClockWidget('Clock')
+
+        self.db.execute("SELECT last_insert_rowid() as ID")
+
+        id = dict(self.db.fetchone())['ID']
+        print(id)
+
+        ClockWidget(tk.Toplevel(), id, self)
+ 
 
 
     def adjustPositionXYvalues(self, clockWidget):

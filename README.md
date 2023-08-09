@@ -1,33 +1,33 @@
 # Clock Widget
-A digital clock to be placed on the Windows desktop using Python's Tkinter module.
+A digital clock to be placed on the Windows desktop using Python. Uses Tkinter and SQLite.
 
 <p align="center">
   <img src="images/initialExample.JPG" alt="Example of Clock Widget in action">
 </p>
 
+## Installation
+- Have Python installed.
+- Download and execute `clockWidget.pyw`.
+- That's it! Enjoy.
 
-# Artifacts~
-## Important
-If you're reading this, then you're probably my facilitator. Hello! This is a prototype I developed long ago, but dropped in favor of other projects. I'm using this class as an opportunity to visit it once again.
+## How to Use
+- Right-click to pull up settings. Go nuts.
 
-## Project Origin
+Note: Consider using Window's Task Scheduler (or your OS's equivalent) in order to open this application automatically upon device startup.
+
+<p align="center">
+  <img src="images/rightClickMenuExample.JPG" alt="Example of rightClick menu">
+</p>
+
+
+
+## Artifacts (Ignorable)~
+### Project Origin
 For a course's final project, the task description read: "All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. **Strive to create something that outlives this course.**" From there, I wrote the initial version to [StickyNoteWidget](https://github.com/danbsolo/StickyNoteWidget). Feeling inspired, I then quickly wrote this application soon after for fun.
 
-## Preface
-This project is still very much in beta, much of the code hanging by a thread along with inadequate style. I aim to fix its shortcomings in the near future, but for now, the requirements are a little obtuse.
+-> These updates? A remnant of my final semester at Algonquin College.
 
-## How to Install
-1. Ensure Python is installed along with the Tkinter library, which is typically included by default.
-2. Create an *Environment Variable* called `TRACKER_FILES`. Its value should be the location of the folder where both `clock.py` and `clock` is stored. For example, your value may be: `C:/Users/NAME/Desktop/widgets/`. 
-Must be forward slashes, not back slashes. Must end in a forward slash.
-
-## Features
-- Saves size and location of the window upon clicking `X`.
+### Features
+- Right-click window to open settings.
+- Automatically saves size and location.
 - Other than that, all it does is accomplish the bare minimum of a functional clock widget.
-
-## Known Issues
-- Spawns a useless black box if opening outside the context of an IDE (Python's terminal window).
-- New size and location may be lost if user doesn't either type something or click `X` button to save the configuration; e.g., shutting down the computer or clicking the terminal's `X` button instead.
-- The x and y attributes slightly save the location of the window incorrectly, only solved with `rootx_adjust` and `rooty_adjust` in `immutable_configuration.txt`.
-- Putting the widget into `ORR mode` renders it impossible to close through normal methods; requires ending the task manually in task manager.
-- An extremely rare glitch can occur where the window will spawn outside the bounds of the desktop screen, resulting in it being inaccessible. Fixing this requires one to change the location of the file manually in `configuration.txt` to something manageable such as `451x257+213+202`.
